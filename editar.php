@@ -40,15 +40,7 @@
                 if (!empty($name) && !empty($email) && !empty($id)) {
                     $usuario = new User();
                     $usuario -> load($id);
-                    $usuario -> updateUser(1,['name'=>$name,'surname'=>$surname, 'birthdate'=>$birthdate, 'address'=>$address, 'email'=>$email, 'password'=>$pass]);
-                    // $sql = "update user set name='$name', email='$email' where id=$id";
-                    /* if ($conn->exec($sql)) {
-                        ?>
-                        <div class="alert alert-success">
-                            <strong>Correcto: </strong> user editado .
-                        </div>
-                        <?php
-                    }*/
+                    $usuario -> updateUser($id,['name'=>$name,'surname'=>$surname, 'birthdate'=>$birthdate, 'address'=>$address, 'email'=>$email, 'password'=>$pass]);
                 }
 
                 if (!empty($id)) {
@@ -85,7 +77,8 @@
                                 <label for="password">password:</label>
                                 <input type="text" class="form-control" id="password"  name="password" value="<?= $user['password'] ?>">
                             </div>
-                            <a href="index.php"></a> <button type="submit" class="btn btn-primary">Enviar</button>
+                            <button type="submit" class="btn btn-primary"> <a href="/ProyectoDaw-BackEnd-master/ProyectoDAW/index.php">Enviar</a></button>
+
                         </form>
                         <?php
                     } else {
