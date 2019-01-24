@@ -105,6 +105,11 @@ class user extends Tabla {
            throw new Exception("Register doesnt exist, shit");
        }
    }
+   function updateUser($id, $valores){
+       if (!empty($this->id)) {
+           $this->update($this->id, $valores);
+       }
+   }
    function delete() {
         if (!empty($this->id)) {
             $this->deleteById($this->id);
@@ -131,9 +136,6 @@ class user extends Tabla {
    function save() {
        $user = $this->valores();
        unset($user['id']);
-       //$this->centro->save();
-      // $user['idcentro']=$this->centro->idcentro;
-       //unset($user['centro']);
        
        if (empty($this->id)) {
            $this->insert($user);

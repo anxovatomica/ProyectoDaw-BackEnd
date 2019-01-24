@@ -66,10 +66,8 @@
                     newUser($name, $surname, $birthdate, $address, $email, $pass);
                 }
                     if (!empty($id) ) {
-                        echo $id;
                         $usuario=new User();
                         $usuario->load($id);
-                        echo $usuario->id;
                         $usuario->delete();
                     /*$sql = "delete from users where id=$id";
                     if ($conn->exec($sql)) {

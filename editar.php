@@ -19,32 +19,36 @@
             include_once('user.php');
             include_once('tablaclass.php');
 
+            $name = filter_input(INPUT_POST, "name", FILTER_SANITIZE_STRING);
+            $surname = filter_input(INPUT_POST, "surname", FILTER_SANITIZE_STRING);
+            $birthdate = filter_input(INPUT_POST, "birthdate", FILTER_SANITIZE_STRING);
+            $address = filter_input(INPUT_POST, "address", FILTER_SANITIZE_STRING);
+            $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_STRING);
+            $pass = filter_input(INPUT_POST, "pass", FILTER_SANITIZE_STRING);
+            $id = filter_input(INPUT_GET, "id", FILTER_VALIDATE_INT);
+
             $server = "localhost";
             $user = "root";
             $pass = "";
             $db = "plugwalk";
+
             try {
 
                 $conn = new PDO("mysql:host=$server;dbname=$db", $user, $pass);
                 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 
-                
-                $name = filter_input(INPUT_POST, "name", FILTER_SANITIZE_STRING);
-                $surname = filter_input(INPUT_POST, "surname", FILTER_SANITIZE_STRING);
-                $birthdate = filter_input(INPUT_POST, "birthdate", FILTER_SANITIZE_STRING);
-                $address = filter_input(INPUT_POST, "address", FILTER_SANITIZE_STRING);
-                $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_STRING);
-                $pass = filter_input(INPUT_POST, "pass", FILTER_SANITIZE_STRING);
-                $id = filter_input(INPUT_GET, "id", FILTER_VALIDATE_INT);
                 if (!empty($name) && !empty($email) && !empty($id)) {
-                    $sql = "update user set name='$name', email='$email' where id=$id";
-                    if ($conn->exec($sql)) {
+                    $usuario = new User();
+                    $usuario -> load($id);
+                    $usuario -> updateUser(1,['name'=>$name,'surname'=>$surname, 'birthdate'=>$birthdate, 'address'=>$address, 'email'=>$email, 'password'=>$pass]);
+                    // $sql = "update user set name='$name', email='$email' where id=$id";
+                    /* if ($conn->exec($sql)) {
                         ?>
                         <div class="alert alert-success">
                             <strong>Correcto: </strong> user editado .
                         </div>
                         <?php
-                    }
+                    }*/
                 }
 
                 if (!empty($id)) {
@@ -81,7 +85,7 @@
                                 <label for="password">password:</label>
                                 <input type="text" class="form-control" id="password"  name="password" value="<?= $user['password'] ?>">
                             </div>
-                            <button type="submit" class="btn btn-primary">Enviar</button>
+                            <a href="index.php"></a> <button type="submit" class="btn btn-primary">Enviar</button>
                         </form>
                         <?php
                     } else {
