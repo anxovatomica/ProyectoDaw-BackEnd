@@ -109,7 +109,7 @@
                                 <td><?= $user['email'] ?></td>
                                 <td><?= $user['password'] ?></td>
                                 <td><a class="btn btn-primary " href="?id=<?= $user['id'] ?>">Borrar</a>
-                                <a class="btn btn-primary " href="editar.php?id=<?= $user['id'] ?>" data-id="'.$user->delelete($user['id']).'">Editar</a></td>
+                                <a class="btn btn-primary " href="editar.php?id=<?= $user['id'] ?>" data-id="'.$user->delete($user['id']).'">Editar</a></td>
                                 <!--<a href="borrarProducto.php?id={$producto->id}" class="eliminar" data-id="'.$obj_kart->del_prod($producto->id).'">Eliminar</a>-->
                             </tr>
                             <?php
