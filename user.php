@@ -103,6 +103,21 @@ class user extends Tabla {
            throw new Exception("Register doesnt exist, shit");
        }
    }
+   function load2 ($id) {
+    $user = $this->getById($id);
+    if (!empty($user)) {
+        $this->id = $user['id'];
+        $this->name = $user['name'];
+        $this->surname = $user['surname'];
+        $this->birthdate = $user['birthdate'];
+        $this->address = $user['address'];
+        $this->email = $user['email'];
+        $this->password = $user['password'];
+    } else {
+        throw new Exception("Register doesnt exist, shit");
+    }
+    return $user;
+   }
    function loadAll() {
         $user = $this->getAll();
         return $user;

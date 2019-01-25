@@ -45,12 +45,14 @@
 
                 if (!empty($id)) {
 
-                    $sql = "select * from user where id=$id";
+                // Load user
+                $users = new User();
+                $user = $users -> load2($id);
+                    /* $sql = "select * from user where id=$id";
                     $res = $conn->query($sql);
-                    $user = $res->fetch();
+                    $user = $res->fetch(); */
                     if (!empty($user)) {
                         ?>
-
                         <form method="POST">
                             <input type="hidden" class="form-control" id="id" name="id" value="<?= $user['id'] ?>">
                             <div class="form-group">
@@ -77,12 +79,13 @@
                                 <label for="password">password:</label>
                                 <input type="text" class="form-control" id="password"  name="password" value="<?= $user['password'] ?>">
                             </div>
-                            <button type="submit" class="btn btn-primary"> <a href="/ProyectoDaw-BackEnd-master/ProyectoDAW/index.php">Enviar</a></button>
+                            <button type="submit" class="btn btn-primary">Enviar</button>
+                            <a href="index.php" class="btn btn-primary">Vuelve</a>
 
                         </form>
                         <?php
                     } else {
-                        ?><p>user desconocido</p>
+                        ?><p>Usuario desconocido :(</p>
                         <?php
                     }
                 } else {
