@@ -16,33 +16,7 @@
             <div class="jumbotron">
                 <h1>USERS CRUD</h1>
             </div>
-            <form method="POST">
-                <div class="form-group">
-                    <label for="name">Name:</label>
-                    <input type="text" class="form-control" id="name" name="name">
-                </div>
-                <div class="form-group">
-                    <label for="surname">Surname:</label>
-                    <input type="text" class="form-control" id="surname"  name="surname">
-                </div>
-                <div class="form-group">
-                    <label for="birthdate">Birthdate:</label>
-                    <input type="text" class="form-control" id="birthdate"  name="birthdate">
-                </div>
-                <div class="form-group">
-                    <label for="address">Address:</label>
-                    <input type="text" class="form-control" id="address"  name="address">
-                </div>
-                <div class="form-group">
-                    <label for="email">Email:</label>
-                    <input type="text" class="form-control" id="email" name="email">
-                 </div>
-                <div class="form-group">
-                    <label for="pass">Password:</label>
-                    <input type="text" class="form-control" id="pass"  name="pass">
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
+            <a href="signup.php" class="btn btn-primary">Sign up</a>
             <?php
             include_once('user.php');
             include_once('tablaclass.php');
@@ -63,24 +37,18 @@
                 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 
                 if (!empty($name)/* && !empty($surname) && !empty($birthdate) && !empty($address) && !empty($email) && !empty($pass)*/) {
+                    // create user
                     newUser($name, $surname, $birthdate, $address, $email, $pass);
                 }
                     if (!empty($id) ) {
+                        // Delete user
                         $usuario=new User();
                         $usuario->load($id);
                         $usuario->delete();
-                    /*$sql = "delete from users where id=$id";
-                    if ($conn->exec($sql)) {
-                        ?>
-                        <div class="alert alert-success">
-                            <strong>Correcto: </strong> User eliminado con id <?= $id ?>.
-                        </div>
-                        <?php
-                    }*/
                 }
-                $sql = "select * from user";
-                $res = $conn->query($sql);
-                $users = $res->fetchAll();
+                // Load all users
+                $user = new User();
+                $users = $user -> loadAll();
                 ?>
                 <table class="table table-striped">
                     <thead>
@@ -128,7 +96,6 @@
                 $a->email = $email;
                 $a->password = $pass;
                 $a->save();
-                //print_r($a);
             }
           
             ?>

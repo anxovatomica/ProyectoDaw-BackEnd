@@ -68,6 +68,7 @@ class user extends Tabla {
     function setPassword($password) {
         $this->password = $password;
     }
+
     function __get($name) {
         $method = "get$name";
         if (method_exists($this, $method)) {
@@ -98,12 +99,13 @@ class user extends Tabla {
            $this->address = $user['address'];
            $this->email = $user['email'];
            $this->password = $user['password'];
-           //$birthdate=new Centro();
-           //$birthdate->load($user['idcentro']);
-           //$this->centro=$birthdate;
        } else {
            throw new Exception("Register doesnt exist, shit");
        }
+   }
+   function loadAll() {
+        $user = $this->getAll();
+        return $user;
    }
    function updateUser($id, $valores){
        if (!empty($this->id)) {

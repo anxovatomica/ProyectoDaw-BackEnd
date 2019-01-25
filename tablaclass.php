@@ -71,12 +71,20 @@ abstract class Tabla {
             throw new Exception("Error: datos incorrectos");
         }
     }
-
+    
+    /**
+     * Esta función nos devuelve el elemento de la tabla que tenga este id
+     * @param int $id El id de la fila
+     */
+    protected function getById($id) {
+        $res = self::$conn->query("select * from " . $this->table . " where "
+                . $this->idField . "=" . $id);
+        return $res->fetch(PDO::FETCH_ASSOC);
+    }
     /**
      * Lo mismo que la anterior pero usando prepare
      * @param type $condicion
      * @param type $completo
-     * @return type
      */
     function getAll($condicion = [], $completo = true) {
         $where = "";
@@ -93,17 +101,6 @@ abstract class Tabla {
         $st->execute($condicion);
         return $st->fetchAll(PDO::FETCH_ASSOC);
     }
-
-    /**
-     * Esta función nos devuelve el elemento de la tabla que tenga este id
-     * @param int $id El id de la fila
-     */
-    protected function getById($id) {
-        $res = self::$conn->query("select * from " . $this->table . " where "
-                . $this->idField . "=" . $id);
-        return $res->fetch(PDO::FETCH_ASSOC);
-    }
-
     /**
      * Elimina el registro que tenga el id que le pasamos
      * @param int $id
