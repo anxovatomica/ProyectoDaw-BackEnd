@@ -161,4 +161,5 @@ class user extends Tabla {
            $this->update($this->id, $user);
        }
    }
+
 }

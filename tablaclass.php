@@ -153,7 +153,49 @@ abstract class Tabla {
             echo $ex->getMessage();
         }
     }
+/*
+     * Login
+     *
+     * @param $email, $password
+     * @return $mixed
+     * */
+    public function Login($email, $password) {
 
+        try {
+            $query = self::$conn->prepare("SELECT id FROM user WHERE  email=:email AND password=:password");
+            $query->bindParam("email", $email, PDO::PARAM_STR);
+            // $enc_password = hash('sha256', $password);
+            $query->bindParam("password", $password, PDO::PARAM_STR);
+            $query->execute();
+            if ($query->rowCount() > 0) {
+                $result = $query->fetch(PDO::FETCH_OBJ);
+                return $result->id;
+            } else {
+                return false;
+            }
+        } catch (PDOException $e) {
+            exit($e->getMessage());
+        }
+    }
+ 
+    /*
+     * get User Details
+     *
+     * @param $user_id
+     * @return $mixed
+     * */
+    public function UserDetails($id) {
+        try {
+            $query = self::$conn->prepare("SELECT id, name, surname, email FROM user WHERE id=:id");
+            $query->bindParam("id", $id, PDO::PARAM_STR);
+            $query->execute();
+            if ($query->rowCount() > 0) {
+                return $query->fetch(PDO::FETCH_OBJ);
+            }
+        } catch (PDOException $e) {
+            exit($e->getMessage());
+        }
+    }
     abstract function load($id);
 
     abstract function save();

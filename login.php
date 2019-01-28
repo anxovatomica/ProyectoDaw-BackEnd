@@ -13,12 +13,12 @@
     </head>
     <body> <div class="container">
             <div class="jumbotron">
-                <h1>Editar users</h1>
+                <h1>Log in users</h1>
             </div>
             <?php
             include_once('user.php');
             include_once('tablaclass.php');
-
+            
             $name = filter_input(INPUT_POST, "name", FILTER_SANITIZE_STRING);
             $surname = filter_input(INPUT_POST, "surname", FILTER_SANITIZE_STRING);
             $birthdate = filter_input(INPUT_POST, "birthdate", FILTER_SANITIZE_STRING);
@@ -33,41 +33,50 @@
             $db = "plugwalk";
 
             try {
-
+                
                 $conn = new PDO("mysql:host=$server;dbname=$db", $user, $pass);
                 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                if (!empty($_POST['loginSubmit'])) 
-{
-$usernameEmail=$_POST['usernameEmail'];
-$password=$_POST['password'];
-if(strlen(trim($usernameEmail))>1 && strlen(trim($password))>1 )
-{
-$uid=$userClass->userLogin($usernameEmail,$password);
-if($uid)
-{
-$url=BASE_URL.'home.php';
-header("Location: $url"); // Page redirecting to home.php 
-}
-else
-{
-$errorMsgLogin="Please check login details.";
-}
-}
-}
-                // Code For LOGIN
+
+                $usuario=new User();
+
+                if (!empty($_POST['btnLogin'])) {
+                    $username = trim($_POST['email']);
+                    $password = trim($_POST['password']);
+                 
+                    if ($username == "") {
+                        $login_error_message = 'Username field is required!';
+                    } else if ($password == "") {
+                        $login_error_message = 'Password field is required!';
+                    } else {
+                        $id = $usuario->Login($username, $password); // check user login
+                        if($id > 0) {
+                            session_start();
+                            $_SESSION['id'] = $id; // Set Session
+                            header("Location: home.php"); // Redirect user
+                        }
+                        else
+                        {
+                            $login_error_message = 'Invalid login details!';
+                        }
+                    }
+                }
+                // Code For LOGIN value="<?= $user['email']
                         ?>
-                        <form method="POST">
-                            <div class="form-group">
-                                <label for="email">Email:</label>
-                                <input type="text" class="form-control" id="email"  name="email" value="<?= $user['email'] ?>">
-                            </div>
-                            <div class="form-group">
-                                <label for="password">Password:</label>
-                                <input type="text" class="form-control" id="password"  name="password" value="<?= $user['password'] ?>">
-                            </div>
-                            <button type="submit" class="btn btn-primary">Enviar</button>
-                            <a href="index.php" class="btn btn-primary">Vuelve</a>
-                        </form>
+                        <h4>Login</h4>
+           
+            <form action="" method="post">
+                <div class="form-group">
+                    <label for="">Username/Email</label>
+                    <input type="text" name="email" class="form-control"/>
+                </div>
+                <div class="form-group">
+                    <label for="">Password</label>
+                    <input type="password" name="password" class="form-control"/>
+                </div>
+                <div class="form-group">
+                    <input type="submit" name="btnLogin" class="btn btn-primary" value="Login"/>
+                </div>
+            </form>
                         <?php
             
             } catch (PDOException $e) {

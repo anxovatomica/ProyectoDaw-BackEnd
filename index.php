@@ -17,6 +17,7 @@
                 <h1>USERS CRUD</h1>
             </div>
             <a href="signup.php" class="btn btn-primary">Sign up</a>
+            <a href="login.php" class="btn btn-primary">Log in</a>
             <?php
             include_once('user.php');
             include_once('tablaclass.php');
