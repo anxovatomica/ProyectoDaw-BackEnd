@@ -19,29 +19,31 @@
             <form method="POST">
                 <div class="form-group">
                     <label for="name">Name:</label>
-                    <input type="text" class="form-control" id="name" name="name">
+                    <input type="text" class="form-control" id="name" name="name" require>
                 </div>
                 <div class="form-group">
                     <label for="surname">Surname:</label>
-                    <input type="text" class="form-control" id="surname"  name="surname">
+                    <input type="text" class="form-control" id="surname"  name="surname" require>
                 </div>
                 <div class="form-group">
                     <label for="birthdate">Birthdate:</label>
-                    <input type="text" class="form-control" id="birthdate"  name="birthdate">
+                    <input type="text" class="form-control" id="birthdate"  name="birthdate" require>
                 </div>
                 <div class="form-group">
                     <label for="address">Address:</label>
-                    <input type="text" class="form-control" id="address"  name="address">
+                    <input type="text" class="form-control" id="address"  name="address" require>
                 </div>
                 <div class="form-group">
                     <label for="email">Email:</label>
-                    <input type="text" class="form-control" id="email" name="email">
+                    <input type="text" class="form-control" id="email" name="email" require>
                  </div>
                 <div class="form-group">
                     <label for="pass">Password:</label>
-                    <input type="text" class="form-control" id="pass"  name="pass">
+                    <input type="password" class="form-control" id="pass"  name="pass" require>
                 </div>
-                <button type="submit"><a href="index.php" class="btn btn-primary"> Submit</a></button>
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <a href="index.php" class="btn btn-primary">Back</a>
+                
             </form>
             <?php
             include_once('user.php');
@@ -56,40 +58,26 @@
            
             $server = "localhost";
             $user = "root";
-            $pass = "";
+            $passw = "";
             $db = "plugwalk";
             try {
-                $conn = new PDO("mysql:host=$server;dbname=$db", $user, $pass);
+                $conn = new PDO("mysql:host=$server;dbname=$db", $user, $passw);
                 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 
-                if (!empty($name)/* && !empty($surname) && !empty($birthdate) && !empty($address) && !empty($email) && !empty($pass)*/) {
-                    // create user
-                    newUser($name, $surname, $birthdate, $address, $email, $pass);
+                if (!empty($name) && !empty($surname) && !empty($birthdate) && !empty($address) && !empty($email) && !empty($pass)) {
+                    // Create user
+                    $a = new User();
+                    $a->name = $name;
+                    $a->surname = $surname;
+                    $a->birthdate = $birthdate;
+                    $a->address = $address;
+                    $a->email = $email;
+                    $a->password = $pass;
+                    $a->save();
                 }
-                    if (!empty($id) ) {
-                        // Delete user
-                        $usuario=new User();
-                        $usuario->load($id);
-                        $usuario->delete();
-                }
-                // Load all users
-                $user = new User();
-                $users = $user -> loadAll();
-                
             } catch (PDOException $e) {
                 echo "Connection failed: " . $e->getMessage();
             }
-            function newUser($name, $surname, $birthdate, $address, $email, $pass){
-                $a = new User();
-                $a->name = $name;
-                $a->surname = $surname;
-                $a->birthdate = $birthdate;
-                $a->address = $address;
-                $a->email = $email;
-                $a->password = $pass;
-                $a->save();
-            }
-          
             ?>
         </div>
     </body>

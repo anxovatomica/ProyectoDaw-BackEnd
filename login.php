@@ -66,7 +66,7 @@
            
             <form action="" method="post">
                 <div class="form-group">
-                    <label for="">Username/Email</label>
+                    <label for="">Email</label>
                     <input type="text" name="email" class="form-control"/>
                 </div>
                 <div class="form-group">

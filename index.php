@@ -37,13 +37,10 @@
                 $conn = new PDO("mysql:host=$server;dbname=$db", $user, $pass);
                 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 
-                if (!empty($name)/* && !empty($surname) && !empty($birthdate) && !empty($address) && !empty($email) && !empty($pass)*/) {
-                    // create user
-                    newUser($name, $surname, $birthdate, $address, $email, $pass);
-                }
+               
                     if (!empty($id) ) {
                         // Delete user
-                        $usuario=new User();
+                        $usuario = new User();
                         $usuario->load($id);
                         $usuario->delete();
                 }
@@ -87,16 +84,6 @@
                 <?php
             } catch (PDOException $e) {
                 echo "Connection failed: " . $e->getMessage();
-            }
-            function newUser($name, $surname, $birthdate, $address, $email, $pass){
-                $a = new User();
-                $a->name = $name;
-                $a->surname = $surname;
-                $a->birthdate = $birthdate;
-                $a->address = $address;
-                $a->email = $email;
-                $a->password = $pass;
-                $a->save();
             }
           
             ?>

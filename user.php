@@ -151,6 +151,7 @@ class user extends Tabla {
 
 
    function save() {
+
        $user = $this->valores();
        unset($user['id']);
        
@@ -161,5 +162,4 @@ class user extends Tabla {
            $this->update($this->id, $user);
        }
    }
-
 }
