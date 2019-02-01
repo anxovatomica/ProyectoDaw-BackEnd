@@ -36,12 +36,28 @@
 
                 $conn = new PDO("mysql:host=$server;dbname=$db", $user, $pass);
                 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                
+                $objeto = new User();
+                $controller= filter_input(INPUT_GET, "user");
+                $id= filter_input(INPUT_GET, "id");
+                $verb=$_SERVER['REQUEST_METHOD'];
+                $http = new HTTP();
+                if (empty($controller) || !file_exists($controller.".php")){
+                $http=new HTTP();
+                }
+                if ($verb == "POST") {
+                    $raw = file_get_contents("php://input");
+                    $datos = json_decode($raw);
+                    foreach($datos as $c=>$v){
+                    $objeto->$c=$v;
+                    }
+                    $objeto->save();
+                    }
+                /* 
                 if (!empty($name) && !empty($email) && !empty($id)) {
                     $usuario = new User();
                     $usuario -> load($id);
                     $usuario -> updateUser($id,['name'=>$name,'surname'=>$surname, 'birthdate'=>$birthdate, 'address'=>$address, 'email'=>$email, 'password'=>$pass]);
-                }
+                }*/
 
                 if (!empty($id)) {
 
