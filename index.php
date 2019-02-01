@@ -36,17 +36,36 @@
             try {
                 $conn = new PDO("mysql:host=$server;dbname=$db", $user, $pass);
                 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                
-               
+                $controller= filter_input(INPUT_GET, "user");
+                $id = filter_input(INPUT_GET, "id");
+                $objeto = new User();
+                $verb=$_SERVER['REQUEST_METHOD'];
+                $http = new HTTP();
+                if (empty($controller) || !file_exists($controller.".php")){
+                    $http=new HTTP();
+                    //$http->setHttpHeaders(400,new Response("Bad request"));
+                    //die();
+                }
+                if ($verb == "GET") {
+                    echo "<br>";
+                    if (empty($id)) {
+                    $datos = $objeto->loadAll();
+                    $http->setHttpHeaders(200, new Response("Lista $controller",$datos));
+                    } else {
+                    $objeto->load($id);
+                    $http->setHttpHeaders(200, new Response("Lista $controller",$objeto->serialize()));
+                    }
+                }
+               /*
                     if (!empty($id) ) {
                         // Delete user
                         $usuario = new User();
                         $usuario->load($id);
                         $usuario->delete();
-                }
+                } */
                 // Load all users
-                $user = new User();
-                $users = $user -> loadAll();
+                // $user = new User();
+                $datos = $objeto -> loadAll();
                 ?>
                 <table class="table table-striped">
                     <thead>
@@ -62,18 +81,18 @@
                     </thead>
                     <tbody>
                         <?php
-                        foreach ($users as $user) {
+                        foreach ($datos as $objeto) {
                             ?>
                             <tr>
-                                <td><?= $user['id'] ?></td>
-                                <td><?= $user['name'] ?></td>
-                                <td><?= $user['surname'] ?></td>
-                                <td><?= $user['birthdate'] ?></td>
-                                <td><?= $user['address'] ?></td>
-                                <td><?= $user['email'] ?></td>
-                                <td><?= $user['password'] ?></td>
-                                <td><a class="btn btn-primary " href="?id=<?= $user['id'] ?>">Borrar</a>
-                                <a class="btn btn-primary " href="editar.php?id=<?= $user['id'] ?>" data-id="'.$user->delete($user['id']).'">Editar</a></td>
+                                <td><?= $objeto['id'] ?></td>
+                                <td><?= $objeto['name'] ?></td>
+                                <td><?= $objeto['surname'] ?></td>
+                                <td><?= $objeto['birthdate'] ?></td>
+                                <td><?= $objeto['address'] ?></td>
+                                <td><?= $objeto['email'] ?></td>
+                                <td><?= $objeto['password'] ?></td>
+                                <td><a class="btn btn-primary " href="?id=<?= $objeto['id'] ?>">Borrar</a>
+                                <a class="btn btn-primary " href="editar.php?id=<?= $objeto['id'] ?>" data-id="'.$user->delete($user['id']).'">Editar</a></td>
                                 <!--<a href="borrarProducto.php?id={$producto->id}" class="eliminar" data-id="'.$obj_kart->del_prod($producto->id).'">Eliminar</a>-->
                             </tr>
                             <?php
