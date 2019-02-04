@@ -45,7 +45,7 @@
                 $http=new HTTP();
                 }
                 if ($verb == "POST") {
-                    $raw = file_get_contents("php://input");
+                    $raw = file_get_contents("http://localhost/projectDAW/ProyectoDaw-BackEnd/editar.php");
                     $datos = json_decode($raw);
                     foreach($datos as $c=>$v){
                     $objeto->$c=$v;

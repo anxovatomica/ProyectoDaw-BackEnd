@@ -21,6 +21,7 @@
             <?php
             include_once('user.php');
             include_once('tablaclass.php');
+            include_once('webServices.php');
             $name = filter_input(INPUT_POST, "name", FILTER_SANITIZE_STRING);
             $surname = filter_input(INPUT_POST, "surname", FILTER_SANITIZE_STRING);
             $birthdate = filter_input(INPUT_POST, "birthdate", FILTER_SANITIZE_STRING);
@@ -50,10 +51,10 @@
                     echo "<br>";
                     if (empty($id)) {
                     $datos = $objeto->loadAll();
-                    $http->setHttpHeaders(200, new Response("Lista $controller",$datos));
+                    $http->setHttpHeaders(200, new Response("LIST: $controller",$datos));
                     } else {
                     $objeto->load($id);
-                    $http->setHttpHeaders(200, new Response("Lista $controller",$objeto->serialize()));
+                    $http->setHttpHeaders(200, new Response("USER: $controller",$objeto->serialize()));
                     }
                 }
                /*
