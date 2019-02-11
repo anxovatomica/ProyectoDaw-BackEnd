@@ -10,7 +10,7 @@ abstract class Tabla {
     static $server = "localhost";
     static $user = "root";
     static $pass = "";
-    static $database = "plugwalk2";
+    static $database = "plugwalk3";
     protected $table = 'user'; //Nombre de la tabla
     protected $idField; //Nombre del campo clave
     protected $fields;  //Array con los nombres de los campos (opcional)

@@ -33,7 +33,7 @@
             $server = "localhost";
             $user = "root";
             $pass = "";
-            $db = "plugwalk";
+            $db = "plugwalk3";
             try {
                 $conn = new PDO("mysql:host=$server;dbname=$db", $user, $pass);
                 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -50,11 +50,12 @@
                 if ($verb == "GET") {
                     echo "<br>";
                     if (empty($id)) {
-                    $datos = $objeto->loadAll();
-                    $http->setHttpHeaders(200, new Response("LIST: $controller",$datos));
+                        $datos = $objeto->loadAll();
+                        $http->setHttpHeaders(200, new Response("LIST: $controller",$datos));
                     } else {
-                    $objeto->load($id);
-                    $http->setHttpHeaders(200, new Response("USER: $controller",$objeto->serialize()));
+                        $objeto->load($id);
+                        $objeto->delete();
+                        $http->setHttpHeaders(200, new Response("USER: $controller",$objeto->serialize()));
                     }
                 }
                /*
