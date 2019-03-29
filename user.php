@@ -22,7 +22,7 @@ class user extends Tabla {
     function __construct() {
         $show = ["name"];
         $fields = array_slice(array_keys(get_object_vars($this)), 0, $this->num_fields);
-        parent::__construct("user", "id", $fields, $show);
+        parent::__construct("USER", "idUser", $fields, $show);
     }
 
     function getId() {

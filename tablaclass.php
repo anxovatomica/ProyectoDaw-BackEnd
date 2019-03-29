@@ -7,12 +7,12 @@ require_once 'user.php';
  */
 abstract class Tabla {
 
-    static $server = "localhost";
-    static $user = "root";
-    static $pass = "";
-    static $database = "plugwalk3";
-    protected $table = 'user'; //Nombre de la tabla
-    protected $idField; //Nombre del campo clave
+    static $server = "mysql-plugwalk.alwaysdata.net";
+    static $user = "plugwalk";
+    static $pass = "Plugwalk123*";
+    static $database = "plugwalk_marcel";
+    protected $table = 'USER';//Nombre de la tabla
+    protected $idField = "idUser"; //Nombre del campo clave
     protected $fields;  //Array con los nombres de los campos (opcional)
     protected $showFields; //Array con los nombres de los campos a mostrar en determinadas consultas (opcional)
     static protected $conn;
@@ -38,13 +38,17 @@ abstract class Tabla {
      * Función de conexión
      */
     static function conectar() {
-        
+      //s  echo "conectar";
         try {
             self::$conn = new PDO("mysql:host=" . self::$server . ";dbname=" . self::$database, self::$user, self::$pass, [PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'utf8'"]);
             self::$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            
+            
         } catch (Exception $ex) {
+            echo "TABLACLASS CONECTAR ERROR!";
             echo $ex->getMessage();
         }
+        
     }
 
     /**
@@ -87,6 +91,7 @@ abstract class Tabla {
      * @param type $completo
      */
     function getAll($condicion = [], $completo = true) {
+      
         $where = "";
         $campos = " * ";
         if (!empty($condicion)) {
@@ -97,6 +102,7 @@ abstract class Tabla {
         if (!$completo && !empty($this->showFields)) {
             $campos = implode(",", $this->showFields);
         }
+      //  echo "QUERY: ---"."select $campos from " . $this->table . $where." --   ";
         $st = self::$conn->prepare("select $campos from " . $this->table . $where);
         $st->execute($condicion);
         return $st->fetchAll(PDO::FETCH_ASSOC);
@@ -162,7 +168,7 @@ abstract class Tabla {
     public function Login($email, $password) {
 
         try {
-            $query = self::$conn->prepare("SELECT id FROM user WHERE  email=:email AND password=:password");
+            $query = self::$conn->prepare("SELECT id FROM USER WHERE  email=:email AND password=:password");
             $query->bindParam("email", $email, PDO::PARAM_STR);
             // $enc_password = hash('sha256', $password);
             $query->bindParam("password", $password, PDO::PARAM_STR);

@@ -63,17 +63,30 @@
             try {
                 $conn = new PDO("mysql:host=$server;dbname=$db", $user, $passw);
                 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $verb = $_SERVER['REQUEST_METHOD'];
+                $http = new HTTP();
                 
                 if (!empty($name) && !empty($surname) && !empty($birthdate) && !empty($address) && !empty($email) && !empty($pass)) {
+                    if (empty($controller) || !file_exists($controller.".php")){
+                        $http=new HTTP();
+                        }
+                        if ($verb == "POST") {
+                            $raw = file_get_contents("http://input");
+                            $datos = json_decode($raw);
+                            foreach($datos as $c=>$v){
+                                $objeto->$c=$v;
+                            }
+                                $objeto->save();
+                            }
                     // Create user
-                    $a = new User();
+                    /* $a = new User();
                     $a->name = $name;
                     $a->surname = $surname;
                     $a->birthdate = $birthdate;
                     $a->address = $address;
                     $a->email = $email;
                     $a->password = $pass;
-                    $a->save();
+                    $a->save();*/
                 }
             } catch (PDOException $e) {
                 echo "Connection failed: " . $e->getMessage();

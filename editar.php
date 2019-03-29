@@ -39,6 +39,7 @@
                 $objeto = new User();
                 $controller = filter_input(INPUT_GET, "user");
                 $id = filter_input(INPUT_GET, "id");
+                
                 $verb = $_SERVER['REQUEST_METHOD'];
                 $http = new HTTP();
                 if (empty($controller) || !file_exists($controller.".php")){
@@ -48,9 +49,9 @@
                     $raw = file_get_contents("http://input");
                     $datos = json_decode($raw);
                     foreach($datos as $c=>$v){
-                    $objeto->$c=$v;
+                        $objeto->$c=$v;
                     }
-                    $objeto->save();
+                        $objeto->save();
                     }
                 /* 
                 if (!empty($name) && !empty($email) && !empty($id)) {
@@ -64,6 +65,7 @@
                 // Load user
                 $users = new User();
                 $user = $users -> load2($id);
+                $users -> updateUser($id,['name'=>$name,'surname'=>$surname, 'birthdate'=>$birthdate, 'address'=>$address, 'email'=>$email, 'password'=>$pass]);
                     /* $sql = "select * from user where id=$id";
                     $res = $conn->query($sql);
                     $user = $res->fetch(); */
