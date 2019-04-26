@@ -38,7 +38,7 @@
                 
                 break;
             case 'POST':
-                echo "DENTRO POST";
+             //   echo "DENTRO POST";
                 $raw=file_get_contents("php://input");
                 $datos=json_decode($raw);
                 foreach($datos as $c=>$v){

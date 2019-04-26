@@ -38,14 +38,16 @@
                 
                 break;
             case 'POST':
-                echo "DENTRO POST";
+           //     echo "DENTRO POST";
                 $raw=file_get_contents("php://input");
                 $datos=json_decode($raw);
-                echo json_decode($raw);
+               // echo json_decode($datos);
+                echo $raw;
                 foreach($datos as $c=>$v){
                 $objeto->$c=$v;
             }
             $objeto->save();
+                break;
             default:
                 echo ' SORRY BRO :( ';
                 break;
