@@ -1,9 +1,25 @@
-﻿<h1>Hi {{currentUser.firstName}}!</h1>
-<p>You're logged in with Angular 7!!</p>
-<h3>All registered users:</h3>
-<ul>
-    <li *ngFor="let user of users">
-        {{user.username}} ({{user.firstName}} {{user.lastName}})
-        - <a (click)="deleteUser(user.id)" class="text-danger">Delete</a>
-    </li>
-</ul>
+
+  <!-- HEADER-->
+  <br /><br />
+  <!-- Body-->
+  <div class="container">
+    <!--
+          <img class="img-responsive" src="'assets/img/hypebeast.jpg'"  width="460" height="345">
+        -->
+    <section class="main row">
+      <article class="col-sm-12 col-md-8 col-md-offset-2">
+        <img class="img-responsive" [src]="'../../assets/img/hypebeast.jpg'" />
+        <br /><br />
+        <img class="img-responsive" [src]="'../../assets/img/hypebeast.jpg'" />
+        <br/>
+        <button class="btn btn-default col-md-offset-1" routeLink="/users"><a>Users</a></button>
+      </article>
+
+      <article class="col-sm-12 col-md-8 col-md-offset-2">
+      </article>
+    </section>
+  </div>
+  <br /><br />
+
+  <!--Footer-->
+

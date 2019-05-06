@@ -1,0 +1,43 @@
+<!-- HEADER-->
+<br /><br />
+<!-- Body-->
+<div class="container">
+    <section class="main row">
+        <div id="botonesheader">
+            <article class="col-md-4 col-md-offset-1">
+                <div class="btn-group-xs">
+                    <button class="btn btn-default"><a routerLink="/news">Last</a></button>
+                    <button class="btn btn-default"><a routerLink="/news">Popular</a></button>
+                    <button class="btn btn-default"><a routerLink="/news">Commented</a></button>
+                </div>
+            </article>
+            <br/><br/>
+        </div>
+
+          <!--<div *ngFor="let item of news; let i = index">
+            {{i}} {{news.topic}} <br />
+            {{news.date}}
+            {{news.title}}
+            {{news.body}}
+        
+        </div>-->
+        <button class="btn btn-default"><a routerLink="/addnews">Add News test</a></button>
+
+        <article class="col-md-12" *ngFor="let item of news; let i = index">
+            <article class="col-md-4">
+                <img class="img-responsive" [src]="'../../assets/img/unionj1.jpg'" />
+            </article>
+            <article class="col-md-7">
+                    <h3>{{item.title}}</h3>
+                    <p>
+                            {{item.body}}
+                    </p>
+            </article>
+            <br/><br/>
+        </article>
+        
+    </section>
+</div>
+<br /><br />
+
+<!--Footer-->

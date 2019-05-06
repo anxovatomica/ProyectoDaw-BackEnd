@@ -1,0 +1,39 @@
+<!-- HEADER-->
+<br /><br />
+<!-- Body-->
+<div class="container">
+    <section class="main row">
+        <div id="botonesheader">
+            <article class="col-md-4 col-md-offset-1">
+                <div class="btn-group-xs">
+                    <button class="btn btn-default"><a routerLink="/news">Last</a></button>
+                    <button class="btn btn-default"><a routerLink="/news">Popular</a></button>
+                    <button class="btn btn-default"><a routerLink="/news">Commented</a></button>
+                </div>
+            </article>
+            <br/><br/>
+        </div>
+
+        <h2>Añadir nuevo post</h2>
+
+        <article class="col-md-12">
+            <form (ngSubmit)="addNewPost()">
+            <article class="col-md-4">
+                 Topic:<br/> <input type="text" class="form-control" name="topic" #nomProducte="ngModel"  [(ngModel)]="nuevoPost.topic">
+            </article>
+            <article class="col-md-4">
+                Título:<br/> <input type="text" class="form-control" name="title" #nomProducte="ngModel"  [(ngModel)]="nuevoPost.title">
+            </article>
+            <article class="col-md-7">
+                 Notícia:<br/> <textarea class="form-control" name="body" rows="40" cols="20" #nomProducte="ngModel"  [(ngModel)]="nuevoPost.body"> </textarea>   
+            </article>
+            <br/><br/>
+            <button type="submit">Añadir Noticia nueva</button>
+            </form>
+        </article>
+        <router-outlet></router-outlet>
+    </section>
+</div>
+<br /><br />
+
+<!--Footer-->

@@ -1,0 +1,74 @@
+<!-- HEADER-->
+<br /><br />
+<!-- Body-->
+<div class="container">
+    <section class="main row">
+        <div id="botonesheader">
+            <article class="col-md-4 col-md-offset-1">
+                <div class="btn-group-xs">
+                    <button class="btn btn-default" routerLink="/drops"><a >Upcoming</a></button>
+                    <button class="btn btn-default" routerLink="/released"><a >Released</a></button>
+                    <button class="btn btn-default" routerLink="/news"><a>Calendar</a></button>
+                </div>
+            </article>
+            <br /><br />
+        </div>
+        
+        <!--<div *ngFor="let drop of drops;">
+            {{drop.idSNEAKER}}<br>
+            {{drop.brand}}<br>
+            {{drop.model}}<br>
+            {{drop.colorWay}}<br>
+            {{drop.dropDate}}<br>
+            {{drop.retailPrice}}<br />
+        </div>
+        -->
+        <article class="col-md-12" >
+            <article class="col-md-4" *ngFor="let drop of drops;">
+                <a routerLink="/upcominginfo"><img class="img-responsive" [src]="'../../assets/img/aj1chicago.jpg'" /></a>Nombre: {{drop.model}}<br/>Marca: {{drop.brand}}<br/>Color: {{drop.colorWay}}<br/>Fecha: {{drop.dropDate}} <br/>Precio: {{drop.retailPrice}}
+            </article>
+            <!--<article class="col-md-4">
+                <img class="img-responsive" [src]="'../../assets/img/aj1chicago.jpg'" />Air Jordan 1 x Off White<br/> 31/05/2018
+            </article>
+            <article class="col-md-4">
+                <img class="img-responsive" [src]="'../../assets/img/aj1chicago.jpg'" />Air Jordan 1 x Off White<br/> 31/05/2018
+            </article>-->
+        </article>
+        <br /><br />
+        <!--<article class="col-md-12">
+            <article class="col-md-4">
+                <img class="img-responsive" [src]="'../../assets/img/aj1chicago.jpg'" />Air Jordan 1 x Off White<br/> 31/05/2018
+            </article>
+            <article class="col-md-4">
+                <img class="img-responsive" [src]="'../../assets/img/aj1chicago.jpg'" />Air Jordan 1 x Off White<br/> 31/05/2018
+            </article>
+            <article class="col-md-4">
+                <img class="img-responsive" [src]="'../../assets/img/aj1chicago.jpg'" />Air Jordan 1 x Off White<br/> 31/05/2018
+            </article>
+            <br /><br />
+        </article>
+        <article class="col-md-12">
+            <article class="col-md-4">
+                <img class="img-responsive" [src]="'../../assets/img/aj1chicago.jpg'" />Air Jordan 1 x Off White<br/> 31/05/2018
+            </article>
+            <article class="col-md-4">
+                <img class="img-responsive" [src]="'../../assets/img/aj1chicago.jpg'" />Air Jordan 1 x Off White<br/> 31/05/2018
+            </article>
+            <article class="col-md-4">
+                <img class="img-responsive" [src]="'../../assets/img/aj1chicago.jpg'" />Air Jordan 1 x Off White<br/> 31/05/2018
+            </article>
+            <br /><br />
+        </article>
+    -->
+    </section>
+</div>
+<!--<button (click)="getDrop()">
+    MOSTRA DROPS
+  </button>-->
+
+<div id="divdrops" ></div>
+
+
+<br /><br />
+
+<!--Footer-->
