@@ -3,7 +3,6 @@ import {NgModule }from '@angular/core';
 import {RouterModule, Routes }from '@angular/router'; 
 import {AppRoutingModule }from './app-routing.module'; 
 
-
 import {AppComponent }from './app.component'; 
 import {FormsModule}from '@angular/forms'; 
 import {HeaderComponent}from './header/header.component'; 
@@ -57,15 +56,15 @@ ReleasedComponent,
 ProxyComponent, 
 ProxypaymentComponent, 
 UsuariosComponent,
-ProfileComponent
-
+ProfileComponent,
   ], 
 imports:[
     RouterModule.forRoot(routes), 
 BrowserModule, 
 AppRoutingModule, 
 FormsModule, 
-HttpClientModule
+HttpClientModule,
+
   ], 
 exports:[
     RouterModule

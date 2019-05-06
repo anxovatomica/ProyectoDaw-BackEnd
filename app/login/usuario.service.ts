@@ -24,6 +24,7 @@ import { Login } from './login';
       let url = "http://plugwalk.alwaysdata.net/api/myAPI.php"
       return this.http.post(url, user, this.generateHeaders()/*{headers:new HttpHeaders({ 'Content-Type':'application/json'})}*/);
     }
+    
     generateHeaders() {
       //console.log("TOKEN????:"+localStorage.getItem("token"))
       if (localStorage.getItem("token") && localStorage.getItem("token")!="undefined") {

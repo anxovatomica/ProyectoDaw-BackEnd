@@ -5,8 +5,8 @@ import { UsuarioService } from "./usuario.service";
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router, ActivatedRoute, Params } from
 '@angular/router'; 
+import * as jwt_decode from "jwt-decode";
 @Component({
-
     selector:'login-tag',
     templateUrl:'./login.component.html',
     styleUrls:['./login.component.css'],    
@@ -20,6 +20,8 @@ export class LoginComponent{
     pass: string = '';
     fail: string= '';
     res:Login;
+    superuser;
+    superpass;
     result: string = '';
     test ;
     home={
@@ -39,7 +41,11 @@ export class LoginComponent{
             if(result.token !=null){
                 console.log("Token OK");
                 localStorage.setItem("token",result.token);
+                console.log(result.token);
                 //redirect
+                this.getDecodedAccessToken(result.token);
+                console.log("name: " + this.superuser);
+                console.log("pass: " + this.superpass);
                 this._router.navigate(['/profile']);
             }else{
                 this.fail = "Login incorrecto";
@@ -49,42 +55,16 @@ export class LoginComponent{
             console.log(error);
         });
     }
-/*
-    getUsers() {
-        this.res = new Login(this.name, this.pass);
-        this.serviceUser.getUser().subscribe(
-          (result) => {
-            //console.log("Result: " + JSON.stringify(result));
-            //console.log(result["message"]);
-            this.usuarios = result["message"];
-            for (let index = 0; index < this.usuarios.length; index++) {
-                
-                const element = this.usuarios[index];
-                console.log("DB name: " + element.name);
-                console.log("DB pass: " + element.password);
-                console.log("LOG name: " + this.res.name);
-                console.log("LOG res pass: " + this.res.password);
-                //console.log("Name: " + element.name + " Pass: " + element.password);
-                /*if(element.name == this.res.name){
-                    console.log('Name OK');
-                    this.log = 'Name OK';
-                } if(element.password == this.res.password){
-                    console.log('Password OK');
-                    this.log = 'Password OK';
-                } 
-                if(element.name == this.res.name && element.password == this.res.password){
-                    console.log('LOGIN OK');
-                    this.log = 'LOGIN OK';
-                }else{
-                    console.log('LOGIN FAIL');
-                    this.log = 'LOGIN OK';
-                }
-            }
-        },
-        (error) => {
-            console.log(error);
-         });
-      }*/
-
+    getDecodedAccessToken(token: string): any {
+        try{
+            var data = jwt_decode(token);
+            this.superuser = data.name;
+            this.superpass = data.password;
+            return data;
+        }
+        catch(Error){
+            return null;
+        }
+      }
 };
 
