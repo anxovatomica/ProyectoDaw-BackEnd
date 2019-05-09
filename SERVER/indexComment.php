@@ -1,5 +1,5 @@
 <?php
-    header("Access-Control-Allow-Origin: *");
+    //header("Access-Control-Allow-Origin: *");
     header("Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method");
     header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
     header("Allow: GET, POST, OPTIONS, PUT, DELETE");
@@ -17,7 +17,7 @@
         //$conn = new PDO("mysql:host=mysql-plugwalk.alwaysdata.net;dbname=plugwalk_marcel", $username, $password);
         //$conn ->  setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $controller = filter_input(INPUT_GET, "comment");
-        $id = filter_input(INPUT_GET, "idComment");
+        $id = filter_input(INPUT_GET, "idUser");
         $objeto = new comment();
         $verb = $_SERVER['REQUEST_METHOD'];
         $http = new HTTP();

@@ -22,27 +22,26 @@
     
     /*SI NO HAY TOKEN, CREAMOS EL TOKEN CON LA INFO DEL USUARIO*/
     $data = file_get_contents('php://input'); //$data = {“nom”:”juan”,”pass”:”1234}
-   // var_dump( $data);
+    echo $data;
+    $comment = json_decode($data);
     
-    $usuari = json_decode($data);
     
-   
-    $usu_email = $usuari->name;
-    $usu_pass = $usuari->password;
+    $usu_id = $comment->idUser;
+    //echo "Usu id: ".$usu_id;
     //CHECK QUE LES SIGUIN CORRECTES AMB LA BASE DE DADES
     //var_dump($usu_pass);
-    $sql = "SELECT * FROM USER WHERE email='".$usu_email."' AND password='".$usu_pass."';";
+    $sql = "SELECT * FROM COMMENT WHERE idUser='".$usu_id."';";
     $result = $conn->query($sql);
     
     if ($result->num_rows > 0) {
         // output data of each row
         while($row = $result->fetch_assoc()) {
-       //     echo "Email: " . $row["email"]. " Password: " . $row["password"]. "<br>";
-          //  $resposta = json_encode($row);
+            //     echo "Email: " . $row["email"]. " Password: " . $row["password"]. "<br>";
+            //  $resposta = json_encode($row);
             //dades usuari correctes per fer el login
             //echo $row;
             
-            $data = '{"iduser":"'.$row["iduser"].'","name":"'.$row["name"].'","surname":"'.$row["surname"].'","birthdate":"'.$row["birthdate"].'","address":"'.$row["address"].'","email":"'.$row["email"].'","password":"'.$row["password"].'","ur_foto":"'.$row["ur_foto"].'"}';
+            $data = '{"idComment":"'.$row["idComment"].'","idUser":"'.$row["idUser"].'","idPost":"'.$row["idPost"].'","comment":"'.$row["comment"].'","date":"'.$row["date"].'",}';
             
             $token =jwtGetCodeJSON($data);
             
@@ -72,3 +71,4 @@
     $token =jwtGetCodeJSON( $data );
     //echo '{"token":"'.$token.'"}';
     
+

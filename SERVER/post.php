@@ -5,7 +5,7 @@ require_once 'tablaclass.php';
 /**
  * Description of sneajer
  *
- * @author dam
+ * @author marcel
  */
 class post extends Tabla {
 
@@ -13,10 +13,10 @@ class post extends Tabla {
     private $idPOST;
     private $topic;
     private $date;
-    private $USER_idUSER;
+    private $iduser;
     private $title;
     private $body;
-    private $num_fields = 4;
+    private $num_fields = 6;
 
     function __construct() {
         $show = ["idPOST"];
@@ -34,8 +34,8 @@ class post extends Tabla {
     function getDate(){
         return $this->date;
     }
-    function getUSER_idUSER() {
-        return $this->USER_idUSER;
+    function getIduser() {
+        return $this->iduser;
     }
     function getTitle() {
         return $this->title;
@@ -58,8 +58,8 @@ class post extends Tabla {
     function setDate($date) {
         $this->date = $date;
     }
-    function setUSER_idUSER($USER_idUSER) {
-        $this->USER_idUSER = $USER_idUSER;
+    function setIduser($iduser) {
+        $this->iduser = $iduser;
     }
 
     function __get($topic) {
@@ -88,7 +88,7 @@ class post extends Tabla {
            $this->idPOST = $user['idPOST'];
            $this->topic = $user['topic'];
            $this->date = $user['date'];
-           $this->USER_idUSER = $user['USER_idUSER'];
+           $this->iduser = $user['iduser'];
        } else {
            throw new Exception("Register doesnt exist, shit");
        }
@@ -99,7 +99,7 @@ class post extends Tabla {
         $this->idPOST = $user['idPOST'];
         $this->topic = $user['topic'];
         $this->date = $user['date'];
-        $this->USER_idUSER = $user['USER_idUSER'];
+        $this->USER_idUSER = $user['iduser'];
     } else {
         throw new Exception("Register doesnt exist, shit");
     }
@@ -120,7 +120,7 @@ class post extends Tabla {
             $this->idPOST = null;
             $this->topic = null;
             $this->date = null;
-            $this->USER_idUSER = null;
+            $this->iduser = null;
         } else {
             throw new Exception("No hay registro para borrar");
         }
