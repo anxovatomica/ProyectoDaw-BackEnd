@@ -11,7 +11,7 @@ export var superidComment: string = '';
 export var superidUser: string = '';
 export var superidPost: string = '';
 export var supercomment: string = '';
-export var superdate: string = '';
+//export var superdate: string = '';
 @Component({
 
     selector:'profile-tag',
@@ -26,8 +26,8 @@ export class ProfileComponent  {
     //foto: string;
     constructor(private serviceProfile: ProfileService,private _router: Router,
         private _activRoute: ActivatedRoute) { }
-    public helloString: string="hello " + myGlobals.sep + " there";
-    comment: Comment[] = [];
+    //comment: Comment[] = [];
+    superdate: string = '';
     id = user.superid;
     name = user.supername;
     surname = user.supersurname;
@@ -37,6 +37,7 @@ export class ProfileComponent  {
     email = user.superemail;
     password = user.superpass;
     foto = user.superphoto;
+    date = this.superdate;
     ngOnInit(): void {
         this.getLogin(this.id);
     }
@@ -45,34 +46,31 @@ export class ProfileComponent  {
         let comment = new Comment(user.superid);
         //console.log(usu);
         this.serviceProfile.getPost( comment ).subscribe((result) => {
-            if(result.token !=null){
+            
                 console.log("Token OK");
-                localStorage.setItem("token",result.token);
-                console.log(result.token);
+                localStorage.setItem("token",result);
+                console.log(result);
                  //redirect
-                 this.getDecodedAccessToken(result.token);
+                 this.getDecodedAccessToken(result);
                  console.log("Id Comment: " + superidComment);
                  console.log("id User: " + superidUser);
                  console.log("id post: " + superidPost);
                  console.log("comment: " + supercomment);
-                 console.log("date: " + superdate);
+                 console.log("date: " + this.superdate);
                 //this._router.navigate(['/profile']);
-            }else{
-                console.log("Comment FAIL");
-            }
+            
         } , (error) => {
             console.log(error);
         });
     }
-    getDecodedAccessToken(token: string): any {
+    getDecodedAccessToken(result): any {
         try{
-            var data = jwt_decode(token);
-            superidComment = data.idComment;
-            superidUser = data.idUser;
-            superidPost = data.idPost;
-            supercomment = data.comment;
-            superdate = data.date;
-            return data;
+            superidComment = result.idPost;
+            superidUser = result.idUser;
+            superidPost = result.idPost;
+            supercomment = result.comment;
+            this.superdate = result.date;
+            return result;
         }
         catch(Error){
             return null;
