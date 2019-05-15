@@ -14,6 +14,7 @@ export var superemail: string = '';
 export var superpass: string = '';
 export var superphoto: string = '';
 
+
 @Component({
     selector:'login-tag',
     templateUrl:'./login.component.html',
@@ -70,6 +71,7 @@ export class LoginComponent{
             }
         } , (error) => {
             console.log(error);
+            console.log("Login FAIL");
         });
     }
     getDecodedAccessToken(token: string): any {

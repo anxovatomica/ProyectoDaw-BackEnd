@@ -12,6 +12,7 @@ export var superidUser: string = '';
 export var superidPost: string = '';
 export var supercomment: string = '';
 //export var superdate: string = '';
+
 @Component({
 
     selector:'profile-tag',
@@ -23,25 +24,84 @@ export var supercomment: string = '';
 
 export class ProfileComponent  {
     profile: Profile[] = [];
+    
     //foto: string;
     constructor(private serviceProfile: ProfileService,private _router: Router,
         private _activRoute: ActivatedRoute) { }
     //comment: Comment[] = [];
     superdate: string = '';
-    id = user.superid;
-    name = user.supername;
-    surname = user.supersurname;
-    username = user.supername;
-    birthdate = user.superbirthdate;
-    address = user.superaddress;
-    email = user.superemail;
-    password = user.superpass;
-    foto = user.superphoto;
-    date = this.superdate;
+    id;
+        name;
+        surname;
+        birthdate;
+        username;
+        address;
+        email;
+        password;
+        foto;
+        date;
+        logout = false;
+        
+        
+    
     ngOnInit(): void {
-        this.getLogin(this.id);
+        a =  localStorage.getItem('token');
+        if(a = null){
+            this.id = "";
+            this.name = "";
+            this.surname = "";
+            this.username = "";
+            this.birthdate = "";
+            this.address = "";
+            this.email = "";
+            this.password = "";
+            this.foto = "";
+            this.date = "";
+        }else if(foto = "fewf"){
+            this.id = user.superid;
+            this.name = user.supername;
+            this.surname = user.supersurname;
+            this.username = user.supername;
+            this.birthdate = user.superbirthdate;
+            this.address = user.superaddress;
+            this.email = user.superemail;
+            this.password = user.superpass;
+            this.foto = user.superphoto;
+            this.date = this.superdate;
+        }
+        
     }
-    getLogin(id){
+    logOut(){
+       console.log("log Out");
+       console.log("token in: " + localStorage.getItem('token'));
+            localStorage.removeItem('token');
+            console.log("token out: " + localStorage.getItem('token'));
+            this.id = "";
+            this.name = "";
+            this.surname = "";
+            this.username = "";
+            this.birthdate = "";
+            this.address = "";
+            this.email = "";
+            this.password = "";
+            this.foto = "";
+            this.date = "";
+        /*let logout:boolean = true;
+        //console.log(usu);
+        this.serviceProfile.logOut( logout ).subscribe((result) => {
+            
+                console.log("Token OK");
+                localStorage.setItem("token",result);
+                console.log(result);
+                 //redirect
+                 this.getDecodedAccessToken(result);
+                //this._router.navigate(['/profile']);
+            
+        } , (error) => {
+            console.log(error);
+        });*/
+    }
+    /*getLogin(id){
         //console.log("GET LOGIN!")
         let comment = new Comment(user.superid);
         //console.log(usu);
@@ -62,18 +122,5 @@ export class ProfileComponent  {
         } , (error) => {
             console.log(error);
         });
-    }
-    getDecodedAccessToken(result): any {
-        try{
-            superidComment = result.idPost;
-            superidUser = result.idUser;
-            superidPost = result.idPost;
-            supercomment = result.comment;
-            this.superdate = result.date;
-            return result;
-        }
-        catch(Error){
-            return null;
-        }
-      }
+    }*/
 };
