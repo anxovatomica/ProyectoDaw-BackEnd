@@ -29,8 +29,8 @@ export class ProfileComponent  {
     constructor(private serviceProfile: ProfileService,private _router: Router,
         private _activRoute: ActivatedRoute) { }
     //comment: Comment[] = [];
-    superdate: string = '';
-    id;
+        superdate: string = '';
+        id;
         name;
         surname;
         birthdate;
@@ -45,8 +45,10 @@ export class ProfileComponent  {
         
     
     ngOnInit(): void {
-        a =  localStorage.getItem('token');
-        if(a = null){
+        var a =  localStorage.getItem('token');
+        console.log("toKen: "+ a);
+        if(a == null){
+            console.log("toKen1: "+ a);
             this.id = "";
             this.name = "";
             this.surname = "";
@@ -57,7 +59,9 @@ export class ProfileComponent  {
             this.password = "";
             this.foto = "";
             this.date = "";
-        }else if(foto = "fewf"){
+            
+        }else if(a != null){
+            console.log("toKen2: "+ a);
             this.id = user.superid;
             this.name = user.supername;
             this.surname = user.supersurname;
@@ -86,6 +90,7 @@ export class ProfileComponent  {
             this.password = "";
             this.foto = "";
             this.date = "";
+            this._router.navigate(['/home']);
         /*let logout:boolean = true;
         //console.log(usu);
         this.serviceProfile.logOut( logout ).subscribe((result) => {
