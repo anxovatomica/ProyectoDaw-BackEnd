@@ -6,7 +6,7 @@ import * as user from 'src/app/login/login.component';
 import { getAllDebugNodes } from "@angular/core/src/debug/debug_node";
 import { Comment } from "./Comment";
 import { Router, ActivatedRoute, Params } from '@angular/router'; 
-import * as jwt_decode from "jwt-decode";
+
 export var superidComment: string = '';
 export var superidUser: string = '';
 export var superidPost: string = '';

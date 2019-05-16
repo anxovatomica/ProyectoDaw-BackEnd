@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { Router } from "@angular/router";
 
 @Component({
 
@@ -13,5 +14,14 @@ export class HeaderComponent{
         title:"",
         words:""
     };
-
+    fail:string = "";
+    constructor(private _router: Router) { }
+    checkUser(){
+        var token =  localStorage.getItem('token');
+        if(token == null){
+            this.fail = "There's no user logged"
+        }else{
+            this._router.navigate(['/profile']);
+        }
+    }
 };
