@@ -25,6 +25,14 @@ import {Post} from './post';
         url,newpost, {headers:new HttpHeaders({ 'Content-Type':'application/json'})  }
       );
     }
+
+    editNew(newpost:Post):Observable<any>{
+      let url = "/api/indexPost.php"
+      return this.http.post(
+        url,newpost, {headers:new HttpHeaders({ 'Content-Type':'application/json'})  }
+      );
+    }
+
   
   }
   

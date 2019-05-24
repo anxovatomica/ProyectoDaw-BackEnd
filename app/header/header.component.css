@@ -4,3 +4,8 @@
 #botonesheader{
     margin-top: 10px;
 }
+
+.btn-primary{
+  background-color: transparent!important;
+  border-color: transparent!important;
+}

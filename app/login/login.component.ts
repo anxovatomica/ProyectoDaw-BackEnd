@@ -14,7 +14,6 @@ export var superemail: string = '';
 export var superpass: string = '';
 export var superphoto: string = '';
 
-
 @Component({
     selector:'login-tag',
     templateUrl:'./login.component.html',
@@ -71,16 +70,15 @@ export class LoginComponent{
             }
         } , (error) => {
             console.log(error);
-            console.log("Login FAIL");
         });
     }
     getDecodedAccessToken(token: string): any {
         try{
-            var data = jwt_decode(token);
-            superid = data.iduser;
+            var data:Usuario = jwt_decode(token);
+            superid = data.iduser+"";
             supername = data.name;
             supersurname = data.surname;
-            superbirthdate = data.birthdate;
+            superbirthdate = data.birthdate+"";
             superaddress = data.address;
             superemail = data.email;
             superpass = data.password;
@@ -92,4 +90,3 @@ export class LoginComponent{
         }
       }
 };
-

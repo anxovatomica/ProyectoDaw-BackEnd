@@ -13,9 +13,11 @@ import { Post } from '../news/post';
 
 export class AddNewsComponent {
     news: Post[] = [];
-    
-
-    nuevoPost : Post = new Post(null, "",new Date(), null, "", "" );
+     date = new Date('2017-03-07T10:00:00');
+     str = this.date.toDateString();
+    //datetime = new Date('Y-m-d');
+    //datetime.toDateString();
+    nuevoPost : Post = new Post(null, "", this.str, 4, "", "",  );
 
     constructor(private serviceUser: PostService) { }
 
@@ -24,9 +26,12 @@ export class AddNewsComponent {
           subscribe(
             (result) => {
               console.log("----")
-              this.news = result["resposta"];
+              // Devuelve el parametro en JSON del PHP.
+             // this.news = result["resposta"];
     
-              console.log(this.news);
+              //console.log(this.news);
+
+              console.log(result);
             },
             (error) => { console.log(error) }
           );

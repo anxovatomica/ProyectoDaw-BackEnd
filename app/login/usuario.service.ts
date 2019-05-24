@@ -56,5 +56,3 @@ import { Login } from './login';
     */
   
   }
-    
-   

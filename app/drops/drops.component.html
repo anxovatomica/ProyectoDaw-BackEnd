@@ -8,7 +8,6 @@
                 <div class="btn-group-xs">
                     <button class="btn btn-default" routerLink="/drops"><a >Upcoming</a></button>
                     <button class="btn btn-default" routerLink="/released"><a >Released</a></button>
-                    <button class="btn btn-default" routerLink="/news"><a>Calendar</a></button>
                 </div>
             </article>
             <br /><br />
@@ -24,8 +23,9 @@
         </div>
         -->
         <article class="col-md-12" >
+                <button class="btn btn-default col-md-offset-5" routerLink="/upcominginfo"><a >Más Información</a></button><br/><br/>
             <article class="col-md-4" *ngFor="let drop of drops;">
-                <a routerLink="/upcominginfo"><img class="img-responsive" [src]="'../../assets/img/aj1chicago.jpg'" /></a>Nombre: {{drop.model}}<br/>Marca: {{drop.brand}}<br/>Color: {{drop.colorWay}}<br/>Fecha: {{drop.dropDate}} <br/>Precio: {{drop.retailPrice}}
+                <img class="img-responsive" [src]="drop.url_sneaker" />Nombre: {{drop.model}}<br/>Marca: {{drop.brand}}<br/>Color: {{drop.colorWay}}<br/>Fecha: {{drop.dropDate}} <br/>Precio: {{drop.retailPrice}}
             </article>
             <!--<article class="col-md-4">
                 <img class="img-responsive" [src]="'../../assets/img/aj1chicago.jpg'" />Air Jordan 1 x Off White<br/> 31/05/2018
@@ -36,6 +36,7 @@
         </article>
         <br /><br />
         <!--<article class="col-md-12">
+            
             <article class="col-md-4">
                 <img class="img-responsive" [src]="'../../assets/img/aj1chicago.jpg'" />Air Jordan 1 x Off White<br/> 31/05/2018
             </article>

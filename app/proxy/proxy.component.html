@@ -5,50 +5,67 @@
     <section class="main row">
         <br /><br />
         <article class="col-md-12">
-            <article class="col-md-4">
-                <a routerLink="/proxypayment"><img class="img-responsive"
-                        [src]="'../../assets/img/aj1solefly.jpg'" /></a>Air Jordan 1 x Solefly<br /> 31/05/2018
-            </article>
-            <article class="col-md-4">
-                <img class="img-responsive" [src]="'../../assets/img/aj1solefly.jpg'" />Air Jordan 1 x Solefly<br />
+            <article class="col-md-6">
+                <img class="img-responsive" [src]="'../../assets/img/aj1solefly.jpg'" />
+                Air Jordan 1 x Solefly<br />
                 31/05/2018
             </article>
-            <article class="col-md-4">
-                <img class="img-responsive" [src]="'../../assets/img/aj1solefly.jpg'" />Air Jordan 1 x Solefly<br />
-                31/05/2018
+            <article class="col-md-6">
+                <p>
+                    <h3>Costo de servicio: </h3>
+                    Nombre:
+                    <input class="form-control" id="nombre" type="text" style="margin-bottom: 0.5rem">
+                    Apellidos:
+                    <input class="form-control" id="apellidos" type="text" style="margin-bottom: 0.5rem">
+                    Dirección:
+                    <input class="form-control" id="direccion" type="text" style="margin-bottom: 0.5rem">
+                    Codigo Postal:
+                    <input class="form-control" id="codigopostal" type="text" style="margin-bottom: 0.5rem">
+                    Ciudad:
+                    <input class="form-control" id="ciudad" type="text" style="margin-bottom: 0.5rem">
+                    Pais:
+                    <input class="form-control" id="pais" type="text" style="margin-bottom: 0.5rem">
+
+                    <br />
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="hosted_button_id" value="R7VGH74EFU48W">
+                        <input type="image" src="https://www.paypalobjects.com/es_ES/ES/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal, la forma rápida y segura de pagar en Internet.">
+                        <img alt="" border="0" src="https://www.paypalobjects.com/es_ES/i/scr/pixel.gif" width="1" height="1">
+                        </form>
+                        
+                        <p>
+                            <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=R7VGH74EFU48W">Pagar con Paypal</a><br />
+                        </p>
+
+                    <br/>
+
             </article>
+            <br /><br />
+        </article>
+        <article class="col-md-12">
+            <article class="col-md-4">
+                <img class="img-responsive" [src]="'../../assets/img/aj1solefly.jpg'" />
+            </article>
+            <article class="col-md-7">
+                <p>
+                    is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+                    standard dummy text ever since the 1500s,
+                    when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has
+                    survived not only five centuries,
+                    but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised
+                    in
+                    the 1960s with the release of Letraset
+                    sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like
+                    Aldus
+                    PageMaker including versions of Lorem Ipsum.
+                </p>
+            </article>
+            <br /><br />
+            
         </article>
         <br /><br />
-        <article class="col-md-12">
-            <article class="col-md-4">
-                <img class="img-responsive" [src]="'../../assets/img/aj1solefly.jpg'" />Air Jordan 1 x Solefly<br />
-                31/05/2018
-            </article>
-            <article class="col-md-4">
-                <img class="img-responsive" [src]="'../../assets/img/aj1solefly.jpg'" />Air Jordan 1 x Solefly<br />
-                31/05/2018
-            </article>
-            <article class="col-md-4">
-                <img class="img-responsive" [src]="'../../assets/img/aj1solefly.jpg'" />Air Jordan 1 x Solefly<br />
-                31/05/2018
-            </article>
-            <br /><br />
-        </article>
-        <article class="col-md-12">
-            <article class="col-md-4">
-                <img class="img-responsive" [src]="'../../assets/img/aj1solefly.jpg'" />Air Jordan 1 x Solefly<br />
-                31/05/2018
-            </article>
-            <article class="col-md-4">
-                <img class="img-responsive" [src]="'../../assets/img/aj1solefly.jpg'" />Air Jordan 1 x Solefly<br />
-                31/05/2018
-            </article>
-            <article class="col-md-4">
-                <img class="img-responsive" [src]="'../../assets/img/aj1solefly.jpg'" />Air Jordan 1 x Solefly<br />
-                31/05/2018
-            </article>
-            <br /><br />
-        </article>
+     
     </section>
 </div>
 <br /><br />

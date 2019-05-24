@@ -14,41 +14,25 @@
             <br /><br />
         </div>
 
-        <article class="col-md-12">
+        <article class="col-md-12" *ngFor="let drop of drops;" style="border-style: solid;">
             <article class="col-md-3">
-                <img class="img-responsive" [src]="'../../assets/img/aj1chicago.jpg'" />
-                Air Jordan 1 x Off White<br />
-                31/03/2019
+                <img class="img-responsive" [src]="drop.url_sneaker"/>
+                Nombre: {{drop.model}}<br />
+                Fecha: {{drop.dropDate}}
             </article>
             <article class="col-md-8">
                 <p>
-                    <a href="https://launches.endclothing.com">End Clothing</a><br />
-                    <a href="www.sivasdescalzo.es/raffles">Sivasdescalzo</a><br />
-                    <a href="https://drops.slamjamsocialism.com">Slam Jam</a>
-                </p>
-            </article>
-            <br /><br />
-        </article>
-        <article class="col-md-12">
-            <article class="col-md-4">
-                <img class="img-responsive" [src]="'../../assets/img/unionj1.jpg'" />
-            </article>
-            <article class="col-md-7">
-                <p>
-                    is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
-                    standard dummy text ever since the 1500s,
-                    when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has
-                    survived not only five centuries,
-                    but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised
-                    in
-                    the 1960s with the release of Letraset
-                    sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like
-                    Aldus
-                    PageMaker including versions of Lorem Ipsum.
-                </p>
-            </article>
-            <br /><br />
-        </article>
+                     Inscripciones a sorteos disponibles :<br/><br/>
+                    <a [href]="drop.link1"> {{drop.link1}}</a><br />
+                    <a [href]="drop.link2"> {{drop.link2}}</a><br />
+                    <a [href]="drop.link3"> {{drop.link3}}</a><br /><br />
+                    Descripción: <br/>
+                    {{drop.description}}
+                    <br><br>
+                </p><br><br>
+            </article><br>
+            
+        </article><br>
     </section>
 </div>
 <br /><br />

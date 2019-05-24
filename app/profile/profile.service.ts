@@ -16,11 +16,7 @@ import { Comment } from "./Comment";
        let url = "http://plugwalk.alwaysdata.net/api/commentAPI.php"
        return this.http.post(url, comment, this.generateHeaders()/*{headers:new HttpHeaders({ 'Content-Type':'application/json'})}*/);
      }
-     logOut(logout:Boolean):Observable<any>{
-      //console.log("PETICIO LOGIN!");
-       let url = "http://plugwalk.alwaysdata.net/api/myAPI.php"
-       return this.http.post(url, logout, this.generateHeaders()/*{headers:new HttpHeaders({ 'Content-Type':'application/json'})}*/);
-     }
+     
      generateHeaders() {
        if (localStorage.getItem("token") && localStorage.getItem("token")!="undefined") {
        return { 
@@ -37,4 +33,3 @@ import { Comment } from "./Comment";
         }*/
   
   }
-  

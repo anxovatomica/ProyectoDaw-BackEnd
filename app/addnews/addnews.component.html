@@ -19,16 +19,16 @@
         <article class="col-md-12">
             <form (ngSubmit)="addNewPost()">
             <article class="col-md-4">
-                 Topic:<br/> <input type="text" class="form-control" name="topic" #nomProducte="ngModel"  [(ngModel)]="nuevoPost.topic">
+                 Topic:<br/> <input type="text" class="form-control" name="topic"  [(ngModel)]="nuevoPost.topic">
             </article>
             <article class="col-md-4">
-                Título:<br/> <input type="text" class="form-control" name="title" #nomProducte="ngModel"  [(ngModel)]="nuevoPost.title">
+                Título:<br/> <input type="text" class="form-control" name="title"  [(ngModel)]="nuevoPost.title">
             </article>
-            <article class="col-md-7">
-                 Notícia:<br/> <textarea class="form-control" name="body" rows="40" cols="20" #nomProducte="ngModel"  [(ngModel)]="nuevoPost.body"> </textarea>   
+            <article class="col-md-6">
+                 Notícia:<br/> <textarea class="form-control" name="body" rows="20" cols="10"  [(ngModel)]="nuevoPost.body"> </textarea>   
             </article>
             <br/><br/>
-            <button type="submit">Añadir Noticia nueva</button>
+            <button class="btn btn-default" type="submit">Añadir Noticia nueva</button>
             </form>
         </article>
         <router-outlet></router-outlet>
