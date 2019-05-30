@@ -36,7 +36,7 @@ export class ProfileComponent  {
     password = user.superpass;
     foto = user.superphoto;
     ngOnInit(): void {
-        this.getLogin(this.id);
+        //this.getLogin(this.id);
     }
     logout(){
         console.log("token in: " + localStorage.getItem('token'));

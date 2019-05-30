@@ -11,6 +11,12 @@ export class ImageService {
   
       formData.append('image', image);
   
-      return this.http.post('/api/v1/image-upload', formData);
+      return this.http.post('/img/', formData);
+    }
+    postProducte(image: File):Observable<any>{
+      let url = "http://plugwalk.alwaysdata.net/api/commentAPI.php"
+      return this.http.post(
+        url,image, {headers:new HttpHeaders({ 'Content-Type':'application/json'})  }
+      );
     }
   }
