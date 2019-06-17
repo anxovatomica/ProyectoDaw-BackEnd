@@ -17,7 +17,7 @@ export class AddNewsComponent {
      str = this.date.toDateString();
     //datetime = new Date('Y-m-d');
     //datetime.toDateString();
-    nuevoPost : Post = new Post(null, "", this.str, 4, "", "",  );
+    nuevoPost : Post = new Post(null, "", this.str, 4, "", "", "");
 
     constructor(private serviceUser: PostService) { }
 

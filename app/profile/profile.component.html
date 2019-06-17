@@ -15,10 +15,19 @@
         <div class="name ">
            <h1> {{name}}</h1>
         </div>
-
-        <div class="ava">
+        <label class="hoverable ava" for="fileInput">
+            <img [src]="url ? url : 'https://www.w3schools.com/howto/img_avatar.png'" style="margin-left: 50%;
+            margin-right: 8%;"> 
+            <div class="hover-text" style="visibility: hidden">Choose file</div>
+            <div class="background"></div>
+          </label>
+          <br/>
+          <input id="fileInput" type='file' (change)="upload($event)">
+          <button *ngIf="url" (click)="delete()" >delete</button>
+        <!--
+          <div class="ava">
             <img [src]='foto' alt="avatar" style=""/>
-        </div>    
+        </div>  -->  
 
     </header>
     <div class="content">
@@ -48,21 +57,23 @@
                     {{address}} 
                 </p>                
 
-            </div>   
-        </aside>
-
-
-        <section class="main">
+            </div> 
             <div class="box">
                 <p class="title">
                     <i class="fa fa-graduation-cap"></i>
                     Comments
                 </p>
                 <p class="padd-top">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque, maxime obcaecati enim illo dolorem, recusandae eum! Quasi natus quaerat aspernatur hic, maxime necessitatibus, quo voluptatem veritatis excepturi error sit vero deleniti laborum alias, expedita nostrum. Mollitia doloribus voluptates explicabo quidem.
+                    Date: {{superdate}}
                 </p>
             </div>  
+            
 
+        </aside>
+
+
+        <section class="main">
+            
 
             <div class="box">
                 <p class="title">
@@ -73,9 +84,13 @@
                 <p class="padd-top">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur rem, perspiciatis aliquam amet asperiores earum vero hic ab, minus veritatis. 
                 </p>
             </div>  
-            <image-upload></image-upload><br>
-            <input class="btn btn-danger" type="button" (click)="logout()" value="Log Out">
 
+
+
+
+            <div class="box"><!--routerLink="/home"-->
+                <button class="btn btn-danger"  (click)="logOut()"><a>Log Out</a></button>
+            </div> 
         </section>
 
     </div>

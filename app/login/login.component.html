@@ -10,25 +10,22 @@
             <div class="container">
                 <form action="/action_page.php">
                   <div class="row">
-                    <h2 style="text-align:center">Login with Social Media or Manually</h2>
+                    <h2 style="text-align:center">Login con Social Media</h2>
                     <div class="vl">
                       <span class="vl-innertext">or</span>
                     </div>
               
                     <div class="col">
                       <a href="#" class="fb btn">
-                        <i class="fab fa-facebook-square"></i> Login with Facebook
+                        <i class="fab fa-facebook-square"></i> Facebook
                        </a>
-                      <a href="#" class="twitter btn">
-                        <i class="fab fa-twitter-square"></i> Login with Twitter
-                      </a>
-                      <a href="#" class="google btn"><i class="fab fa-google"></i> Login with Google+
+                      <a href="#" class="google btn"><i class="fab fa-google"></i> Google+
                       </a>
                     </div>
                     <form #formExemple="ngForm" (ngSubmit)="getLogin(); formExemple.reset()">
                     <div class="col">
                       <div class="hide-md-lg">
-                        <p>Or sign in manually:</p>
+                        <p>O manualmente</p>
                       </div>
               
                       <input class="form-control" id="email" name="email" placeholder="EMAIL" type="text" style="margin-bottom: 0.5rem" pattern="[A-Za-z]{3,10}" #userForm="ngModel" [(ngModel)]="name">
@@ -46,7 +43,7 @@
               <div class="bottom-container">
                 <div class="row">
                   <div class="col">
-                    <a href="#" style="color:white" class="btn" routerLink="/register">Sign up</a>
+                    <a href="#" style="color:white" class="btn" routerLink="/register">Registro</a>
                   </div>
                   <div class="col">
                     <a href="#" style="color:white" class="btn" routerLink="/**">Inicio</a>

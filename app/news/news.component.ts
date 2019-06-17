@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { PostService } from "./news.service";
 import { Post } from './post';
+import { Router } from "@angular/router";
 
 @Component({
 
@@ -13,8 +14,9 @@ import { Post } from './post';
 
 export class NewsComponent implements OnInit {
     news: Post[] = [];
+    failproxy: string = "";
 
-    constructor(private serviceNews: PostService) { }
+    constructor(private serviceNews: PostService, private _router: Router) { }
 
     ngOnInit(): void {
 
@@ -32,5 +34,15 @@ export class NewsComponent implements OnInit {
             console.log(error);
           });
       }
+
+      checkUser3(){
+        var token = localStorage.getItem('token');
+        console.log(token);
+        if(token == null){
+            this.failproxy = "No puedes acceder sin logear"
+        }else{
+            this._router.navigate(['/news']);
+        }
+    }
 
 };

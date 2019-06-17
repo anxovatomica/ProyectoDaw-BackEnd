@@ -1,3 +1,5 @@
+
+
 import { Component } from "@angular/core";
 import { Usuario } from './usuario';
 import { Login } from './login';
@@ -13,6 +15,7 @@ export var superaddress: string = '';
 export var superemail: string = '';
 export var superpass: string = '';
 export var superphoto: string = '';
+
 
 @Component({
     selector:'login-tag',
@@ -70,6 +73,7 @@ export class LoginComponent{
             }
         } , (error) => {
             console.log(error);
+            console.log("Login FAIL");
         });
     }
     getDecodedAccessToken(token: string): any {

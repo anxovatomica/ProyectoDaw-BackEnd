@@ -8,7 +8,6 @@
                 <div class="btn-group-xs">
                     <button class="btn btn-default"><a routerLink="/news">Last</a></button>
                     <button class="btn btn-default"><a routerLink="/news">Popular</a></button>
-                    <button class="btn btn-default"><a routerLink="/news">Commented</a></button>
                 </div>
             </article>
             <br/><br/>
@@ -21,7 +20,7 @@
             {{news.body}}
         
         </div>-->
-        <button class="btn btn-default"><a routerLink="/addnews">Add News test</a></button>
+        <button class="btn btn-default"><a routerLink="/addnews">Add News</a></button>
 
         <article class="col-md-12" *ngFor="let item of news; let i = index">
             <article class="col-md-4">

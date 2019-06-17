@@ -4,7 +4,7 @@
         <article class="col-md-12">
         </article>
         <div id="header" class="col-md-12">
-          <article class="col-md-2 col-md-offset-1" routerLinkActive="active">
+          <article class="col-md-2 col-md-offset-1">
               <button class="btn btn-primary" routeLink="/home"><img class="img-responsive" [src]="'../../assets/img/oie_transparent.png'" /></button>
           </article>
           <div id="botonesheader">
@@ -13,12 +13,18 @@
                  <button class="btn btn-default" routerLink="/news"><a>News</a></button>
                 <button class="btn btn-default col-md-offset-1" routerLink="/drops"><a>Drops</a></button>
                 <button class="btn btn-default col-md-offset-1">Raffles</button>
-                <button class="btn btn-default col-md-offset-1"routerLink="/proxy"><a>Proxy</a></button>
+                <button class="btn btn-default col-md-offset-1" (click)="checkUser2()"><a>Proxy</a></button>
+                
+                
               </div>
+              <div style="color: red;float: right; margin-right: 55px;">{{failproxy}}</div>
             </article>
           </div>
           <article class="col-md 1">
-            <span class="glyphicon glyphicon-user"><a routerLink="/login">Inicio Sesión / Registro</a></span>
+          <span class="glyphicon glyphicon-user"></span><button class="btn btn-default" routerLink="/login"><a>Login</a></button>
+          <button class="btn btn-warning" (click)="checkUser()"><a>Profile</a></button><br>
+          <span style="color: red">{{fail}}</span>
+          
           </article>
         </div>
       </section>

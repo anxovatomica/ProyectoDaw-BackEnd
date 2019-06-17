@@ -13,5 +13,8 @@ export class ProxyComponent{
         title:"",
         words:""
     };
-
+    ngOnInit(){
+        
+    }
+    
 };
