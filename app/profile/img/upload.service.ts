@@ -35,7 +35,13 @@ export class UploadService {
     }, this.generateHeaders())
     );
   }
-
+  public delete() {
+    const avatar = localStorage.getItem('avatar');
+    if (avatar !== null) {
+      const uploadURL = `${this.SERVER_URL}/img/uploads/`;
+    return this.httpClient.delete <any>('http://plugwalk.alwaysdata.net/img/' + avatar + '.jpg');
+    }
+  }
   generateHeaders() {
     // console.log('TOKEN????:'+localStorage.getItem('token'))
     if (localStorage.getItem('token') && localStorage.getItem('token') !== 'undefined') {

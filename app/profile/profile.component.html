@@ -15,19 +15,11 @@
         <div class="name ">
            <h1> {{name}}</h1>
         </div>
-        <label class="hoverable ava" for="fileInput">
-            <img [src]="url ? url : 'https://www.w3schools.com/howto/img_avatar.png'" style="margin-left: 50%;
-            margin-right: 8%;"> 
-            <div class="hover-text" style="visibility: hidden">Choose file</div>
-            <div class="background"></div>
-          </label>
-          <br/>
-          <input id="fileInput" type='file' (change)="upload($event)">
-          <button *ngIf="url" (click)="delete()" >delete</button>
-        <!--
-          <div class="ava">
-            <img [src]='foto' alt="avatar" style=""/>
-        </div>  -->  
+        
+        <div>
+                <img src="{{image}}" alt="Avatar" class="avatar">
+            <button class="btn btn-info" routerLink="/test-profile">Change photo</button>
+        </div>
 
     </header>
     <div class="content">

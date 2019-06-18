@@ -14,16 +14,15 @@
 <body>
 
   <header>
-
     <div class="name ">
       <h1> {{name}}</h1>
     </div>
   </header>
   <div class="content">
-    <h1>Upload your Avatar!</h1>
+    <h1>Upload your Avatar: {{username1}}</h1>
     <div>
       <div *ngIf="error">
-        {{ error.message }}
+        <!--{{ error.message }}-->
       </div>
       <div *ngIf="uploadResponse.status === 'error'">
         {{ uploadResponse.message }}

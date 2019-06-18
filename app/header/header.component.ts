@@ -23,7 +23,7 @@ export class HeaderComponent{
             this.fail = "No hay usuario logeado"
         }else{
             this._router.navigate(['/profile']);
-            this.fail = '';
+            
         }
     }
     checkUser2(){

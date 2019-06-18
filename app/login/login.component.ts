@@ -45,12 +45,12 @@ export class LoginComponent{
     constructor(private serviceUser: UsuarioService,private _router: Router,
         private _activRoute: ActivatedRoute) { }
     getLogin(){
-        //console.log("GET LOGIN!")
+        // console.log("GET LOGIN!")
         let usu = new Login(this.name,this.pass);
-        //console.log(usu);
+        // console.log(usu);
         this.serviceUser.loginUser( usu ).subscribe((result) => {
-            //console.log("FUNCIONA!:");
-            //console.log(result.token);
+            // console.log("FUNCIONA!:");
+            // console.log(result.token);
             if(result.token !=null){
                 console.log("Token OK");
                 localStorage.setItem("token",result.token);
@@ -63,6 +63,7 @@ export class LoginComponent{
                 console.log("surname: " + supersurname);
                 console.log("birthdate: " + superbirthdate);
                 console.log("address: " + superaddress);
+                const mail = localStorage.setItem('email', superemail);
                 console.log("email: " + superemail);
                 console.log("pass: " + superpass);
                 console.log("photo: " + superphoto);
@@ -79,12 +80,13 @@ export class LoginComponent{
     getDecodedAccessToken(token: string): any {
         try{
             var data:Usuario = jwt_decode(token);
-            superid = data.iduser+"";
+            superid = data.iduser + '';
             supername = data.name;
             supersurname = data.surname;
-            superbirthdate = data.birthdate+"";
+            superbirthdate = data.birthdate + '';
             superaddress = data.address;
             superemail = data.email;
+            localStorage.setItem('email', superemail);
             superpass = data.password;
             superphoto = data.ur_foto;
             return data;

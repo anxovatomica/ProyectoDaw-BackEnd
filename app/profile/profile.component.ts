@@ -6,14 +6,14 @@ import * as user from 'src/app/login/login.component';
 import { Comment } from './Comment';
 import { HttpClient, HttpHeaders, HttpEvent, HttpErrorResponse, HttpEventType } from '@angular/common/http';
 
-import { Router, ActivatedRoute, Params } from '@angular/router'; 
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { FormGroup } from '@angular/forms';
 
-export var superidComment: string = '';
-export var superidUser: string = '';
-export var superidPost: string = '';
-export var supercomment: string = '';
+export let superidComment = '';
+export let superidUser = '';
+export let superidPost = '';
+export let supercomment = '';
 // export var superdate: string = '';
 
 @Component({
@@ -30,7 +30,10 @@ export class ProfileComponent  {
     url = '';
     form: FormGroup;
     error: string;
-    //userId = 1;
+    username1 = user.superid;
+    image: any;
+    // userId = 1;
+
     uploadResponse = { status: '', message: '', filePath: '' };
     public upload(data) {
 
@@ -63,7 +66,7 @@ export class ProfileComponent  {
 
       // tslint:disable-next-line:no-shadowed-variable
       reader.onload = (event) => { // called once readAsDataURL is completed
-        //this.url = event.target.result;
+        // this.url = event.target.result;
         this.serviceProfile.uploadImage(event);
       };
 
@@ -90,8 +93,8 @@ export class ProfileComponent  {
   public delete() {
     this.url = null;
   }
-    //foto: string;
-    constructor(private http: HttpClient, private serviceProfile: ProfileService,private _router: Router,
+    // foto: string;
+    constructor(private http: HttpClient, private serviceProfile: ProfileService, private _router: Router,
         private _activRoute: ActivatedRoute) { }
     // comment: Comment[] = [];
         // tslint:disable-next-line:member-ordering
@@ -108,19 +111,34 @@ export class ProfileComponent  {
         username;
         // tslint:disable-next-line:member-ordering
         address;
+        // tslint:disable-next-line:member-ordering
         email;
+        // tslint:disable-next-line:member-ordering
         password;
+        // tslint:disable-next-line:member-ordering
         foto;
+        // tslint:disable-next-line:member-ordering
         date;
+        // tslint:disable-next-line:member-ordering
         logout = false;
 
     // tslint:disable-next-line:use-life-cycle-interface
+    // tslint:disable-next-line:prefer-const
+
+    // tslint:disable-next-line:use-life-cycle-interface
     ngOnInit(): void {
+      this.image = 'http://plugwalk.alwaysdata.net/img/uploads/avatar.png';
         // tslint:disable-next-line:prefer-const
-        var a =  localStorage.getItem('token');
-        console.log('toKen: ' + a);
+        let a =  localStorage.getItem(user.superemail + '.jpg');
         if (a == null) {
-            console.log('toKen1: '+ a);
+          this.image = 'https://www.w3schools.com/howto/img_avatar.png';
+        } else {
+          this.image = 'http://plugwalk.alwaysdata.net/img/uploads/' + user.superemail + '.jpg';
+        }
+        const token =  localStorage.getItem('token');
+        console.log('toKen: ' + token);
+        /*if (a == null) {
+            console.log('toKen1: ' + a);
             this.id = '';
             this.name = '';
             this.surname = '';
@@ -132,7 +150,7 @@ export class ProfileComponent  {
             this.foto = '';
             this.date = '';
 
-        } else if (a != null) {
+        } else */if (token != null) {
             console.log('toKen2: ' + a);
             this.id = user.superid;
             this.name = user.supername;
@@ -163,41 +181,5 @@ export class ProfileComponent  {
             this.foto = '';
             this.date = '';
             this._router.navigate(['/login']);
-        /*let logout:boolean = true;
-        //console.log(usu);
-        this.serviceProfile.logOut( logout ).subscribe((result) => {
-
-                console.log('Token OK');
-                localStorage.setItem('token',result);
-                console.log(result);
-                 //redirect
-                 this.getDecodedAccessToken(result);
-                //this._router.navigate(['/profile']);
-
-        } , (error) => {
-            console.log(error);
-        });*/
     }
-    /*getLogin(id){
-        //console.log('GET LOGIN!')
-        let comment = new Comment(user.superid);
-        //console.log(usu);
-        this.serviceProfile.getPost( comment ).subscribe((result) => {
-
-                console.log('Token OK');
-                localStorage.setItem('token',result);
-                console.log(result);
-                 //redirect
-                 this.getDecodedAccessToken(result);
-                 console.log('Id Comment: ' + superidComment);
-                 console.log('id User: ' + superidUser);
-                 console.log('id post: ' + superidPost);
-                 console.log('comment: ' + supercomment);
-                 console.log('date: ' + this.superdate);
-                //this._router.navigate(['/profile']);
-
-        } , (error) => {
-            console.log(error);
-        });
-    }*/
 }
